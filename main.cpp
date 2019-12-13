@@ -13,19 +13,51 @@ int main() {
 
     std::cout << len << std::endl;
 
-    int count = 0;
     char text[DISPLAY_LEN];
     int step = 0;
 
-    while(count < 7){
-        for(int i = 0; i < DISPLAY_LEN + 1; i++){
-            text[i] = toDisplay[i + step];
+    char* first = NULL;
+
+    while(step < 24){
+//        for(int i = 0; i < DISPLAY_LEN + 1; i++){
+//            if(i+step < len){
+//                text[i] = toDisplay[i + step];
+//                std::cout << "a";
+//            }else if(i+step > len+2){
+//                text[i] = 'x';//toDisplay[1];
+//                std::cout << "b";
+//            }/*else if(i+step >= len){
+//                text[i] = ' ';
+//                std::cout << "c";
+//            }*/
+//        }
+//        text[DISPLAY_LEN + 1] = '\0';
+first = &toDisplay[step];
+
+        bool done = false;
+        int count = 0;
+        while(!done){
+            if(first[count] == '\0') {
+                done = true;
+                continue;
+            }
+            text[count] = first[count];
+            count++;
+        }
+        done = false;
+        int countb = count;
+        while(!done){
+            if(countb >= 15){
+                done = true;
+            }
+            text[countb] = toDisplay[countb - count];
+            countb++;
         }
 
-        std::cout << text << std::endl;
+        std::cout << "[" << step << "]:\t" << text << std::endl;
         step++;
-        count++;
     }
+    std::cout << "end" << std::endl;
 
     return 0;
 }
