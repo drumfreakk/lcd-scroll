@@ -5,27 +5,6 @@
 
 LiquidCrystal lcd(7, 8, 9, 10, 11, 12);
 
-byte play[8] = {
-  B11000,
-  B11100,
-  B11110,
-  B11111,
-  B11110,
-  B11100,
-  B11000,
-};
-
-byte pause[8] = {
-  B11011,
-  B11011,
-  B11011,
-  B11011,
-  B11011,
-  B11011,
-  B11011,
-};
-
-
 char* toDisplay = NULL;
 int len;
 int stp = 0;
@@ -36,11 +15,6 @@ unsigned long previousMillis = 0;
 const long interval = 500;
 
 void setup() {
-  lcd.createChar(0, play);
-  lcd.createChar(1, pause);
-
-  Serial.begin(9600);
-  // set up the LCD's number of columns and rows:
   lcd.begin(16, 2);
 
   toDisplay = init(input);
